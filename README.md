@@ -10,6 +10,10 @@ Illustrator script to specify dimensions of an object, or to specify the dimensi
 
 Alternatively, you may save the script in a folder of your choosing.
 
+## REQUIREMENTS
+1. Must have an open document in Illustrator.
+2. Must have 1 or two objects selected via Illustrator's Selection Tool (V)
+
 ## HOW TO RUN
 If you saved the script as [described above](#save-to-default-scripts), you should be able to run the script (after selecting one or two objects in the document) by navigating within Illustrator to:
 ```
