@@ -2,7 +2,6 @@
 Illustrator script to specify dimensions of an object, or to specify the dimensions between two objects
 
 ##### Save to Default Scripts
->
 > To allow the script to show as an option within the default `Scripts` menu, save the script in the following location _(path shown is for Mac. Your actual path may vary)_
 > ```
 > Applications > Adobe Illustrator [YOUR VERSION] > Presets > en_US > Scripts
@@ -12,7 +11,7 @@ Alternatively, you may save the script in a folder of your choosing.
 
 ## REQUIREMENTS
 1. Must have an open document in Illustrator.
-2. Must have 1 or two objects selected via Illustrator's Selection Tool (V)
+2. Must have 1 or two objects selected via Illustrator's Selection Tool (V) or Direct Selection Tool (A)
 
 ## HOW TO RUN
 If you saved the script as [described above](#save-to-default-scripts), you should be able to run the script (after selecting one or two objects in the document) by navigating within Illustrator to:
