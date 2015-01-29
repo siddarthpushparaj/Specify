@@ -10,21 +10,21 @@
 
 if (app.documents.length > 0) {
 
-	// Create an empty dialog window near the upper left of the screen
+	// Create empty dialog window
 	var dialogBox = new Window('dialog', 'Specify');
-	dialogBox.frameLocation = [400,200];
-	dialogBox.size = [250,250];
+	dialogBox.frameLocation = [500,400];
+	dialogBox.size = [350,150];
 
-	dialogBox.intro = dialogBox.add('statictext', [20,20,210,40] );
-	dialogBox.intro.text = 'First, select 1 or 2 items';
+	dialogBox.intro = dialogBox.add('statictext', [20,20,310,50] );
+	dialogBox.intro.text = 'Select which dimension to specify';
 
-	dialogBox.where = dialogBox.add('dropdownlist', [20,40,150,60] );
+	dialogBox.where = dialogBox.add('dropdownlist', [20,44,150,60] );
 	dialogBox.where.selection = dialogBox.where.add('item', 'Top');
 	dialogBox.where.add('item', 'Right');
 	dialogBox.where.add('item', 'Bottom');
 	dialogBox.where.add('item', 'Left');
 
-	dialogBox.btn = dialogBox.add('button', [20,70,150,90], 'Specify', 'spec');
+	dialogBox.btn = dialogBox.add('button', [20,68,100,90], 'Specify ▸', 'spec');
 
 	// document
 	var doc = activeDocument;
@@ -39,6 +39,8 @@ if (app.documents.length > 0) {
 		var specsLayer = doc.layers.add();
 		specsLayer.name = 'SPECS';
 	}
+
+
 
 	// measurement line and text color in RGB
 	var color = new RGBColor;
@@ -357,6 +359,7 @@ if (app.documents.length > 0) {
 	*/
 	switch (selectedItems) {
 		case 0:
+			beep();
 			alert('Please select 1 or 2 items and try again.');
 			break;
 		case 1:
@@ -365,6 +368,7 @@ if (app.documents.length > 0) {
 			dialogBox.show();
 			break;
 		default:
+			beep();
 			alert('You have more than 2 items selected. \nPlease select only 1 or 2 items and try again.');
 			break;
 	}
