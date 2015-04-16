@@ -55,7 +55,7 @@ if (app.documents.length > 0) {
 	var size = 6;
 
 	// number of decimal places in measurement
-	var decimals = 1;
+	var decimals = 2;
 
 	// pixels per inch
 	var dpi = 300;
