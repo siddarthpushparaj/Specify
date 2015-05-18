@@ -32,3 +32,10 @@ With a single object selected, the script will display a dialog box and will spe
 Select two objects and [run the script](#how-to-run) within Illustrator
 
 With two objects selected, the script will display a dialog box and will specify the single dimension between the two chosen objects. The dialog allows you to choose which dimension to specify (top, right, bottom, or left) which also corresponds to the placement of the dimension line and text.
+
+#### Units
+The script automatically dimensions objects based on the Document's default units. To dimension in different units (i.e. Inches, Centimeters, etc.) follow the instructions below:
+> 1. In your document, select show Rulers via `View > Rulers > Show Rulers` ( <kbd>⌘Cmd</kbd> + <kbd>R</kbd> on Mac, <kbd>Ctrl</kbd> + <kbd>R</kbd> on PC )
+> 2. Right click on the Ruler, and select your desired units. Otherwise, the script will use the Document's selected units by default.
+> 3. Run the script and you will now get output as shown in the example below
+![specify-example-with-units](https://raw.githubusercontent.com/adamdehaven/Specify/master/specify-example-with-units.jpg)
