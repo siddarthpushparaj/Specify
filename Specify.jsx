@@ -55,7 +55,7 @@ if (app.documents.length > 0) {
 	var size = 6;
 
 	// number of decimal places in measurement
-	var decimals = 2;
+	var decimals = 3;
 
 	// pixels per inch
 	var dpi = 300;
@@ -282,32 +282,47 @@ if (app.documents.length > 0) {
 			t.textRange.characterAttributes.alignment = StyleRunAlignmentType.center;
 			t.textRange.characterAttributes.fillColor = color;
 
+			// Conversions : http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/illustrator/sdk/CC2014/Illustrator%20Scripting%20Guide.pdf
+			// UnitValue object (page 230): http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/scripting/pdfs/javascript_tools_guide.pdf
+
 			var v = val;
 			switch (doc.rulerUnits) {
-				case RulerUnits.Inches:
-					v = val/dpi;
-					v = v.toFixed (decimals);
-					break;
-
-				case RulerUnits.Centimeters:
-					v = val/(dpi/2.54);
-					v = v.toFixed (decimals);
-					break;
-
-				case RulerUnits.Millimeters:
-					v = val/(dpi/25.4);
-					v = v.toFixed (decimals);
-					break;
-
+				
 				case RulerUnits.Picas:
-					v = val/(dpi/6);
+					v = new UnitValue(v, "pt").as("pc");
 					var vd = v - Math.floor (v);
 					vd = 12*vd;
 					v =  Math.floor(v)+'p'+vd.toFixed (decimals);
 					break;
 
-				default:
+				case RulerUnits.Inches:
+					v = new UnitValue(v, "pt").as("in");
 					v = v.toFixed (decimals);
+					v = v + " in"; // add abbreviation
+					break;
+
+				case RulerUnits.Millimeters:
+					v = new UnitValue(v, "pt").as("mm");
+					v = v.toFixed (decimals);
+					v = v + " mm"; // add abbreviation
+					break;
+
+				case RulerUnits.Centimeters:
+					v = new UnitValue(v, "pt").as("cm");
+					v = v.toFixed (decimals);
+					v = v + " cm"; // add abbreviation
+					break;
+
+				case RulerUnits.Pixels:
+					v = new UnitValue(v, "pt").as("px");
+					v = v.toFixed (decimals);
+					v = v + " px"; // add abbreviation
+					break;
+
+				default:
+					v = new UnitValue(v, "pt").as("pt");
+					v = v.toFixed (decimals);
+					v = v + " pt"; // add abbreviation
 			}
 
 			t.contents = v;
