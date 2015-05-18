@@ -39,3 +39,11 @@ The script automatically dimensions objects based on the Document's default unit
 > 2. Right click on the Ruler, and select your desired units. Otherwise, the script will use the Document's selected units by default.
 > 3. Run the script and you will now get output as shown in the example below
 ![specify-example-with-units](https://raw.githubusercontent.com/adamdehaven/Specify/master/specify-example-with-units.jpg)
+
+The units label is optional. A checkbox is included in the Specify dialog box that allows the user to turn the units label on or off.
+##### Examples
+Units Label On: 
+> **220.00 px**
+
+Units Label Off: 
+> **220.00**
