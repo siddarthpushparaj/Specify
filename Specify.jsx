@@ -11,20 +11,23 @@
 if (app.documents.length > 0) {
 
 	// Create empty dialog window
-	var dialogBox = new Window('dialog', 'Specify');
-	dialogBox.frameLocation = [500,400];
-	dialogBox.size = [350,150];
+	var specifyDialogBox = new Window('dialog', 'Specify');
+	specifyDialogBox.frameLocation = [500,400];
+	specifyDialogBox.size = [350,150];
 
-	dialogBox.intro = dialogBox.add('statictext', [20,20,310,50] );
-	dialogBox.intro.text = 'Select which dimension to specify';
+	specifyDialogBox.intro = specifyDialogBox.add('statictext', [20,10,310,50] );
+	specifyDialogBox.intro.text = 'Select which dimension to specify:';
 
-	dialogBox.where = dialogBox.add('dropdownlist', [20,44,150,60] );
-	dialogBox.where.selection = dialogBox.where.add('item', 'Top');
-	dialogBox.where.add('item', 'Right');
-	dialogBox.where.add('item', 'Bottom');
-	dialogBox.where.add('item', 'Left');
+	specifyDialogBox.where = specifyDialogBox.add('dropdownlist', [20,50,100,40] );
+	specifyDialogBox.where.selection = specifyDialogBox.where.add('item', 'Top');
+	specifyDialogBox.where.add('item', 'Right');
+	specifyDialogBox.where.add('item', 'Bottom');
+	specifyDialogBox.where.add('item', 'Left');
 
-	dialogBox.btn = dialogBox.add('button', [20,68,100,90], 'Specify ▸', 'spec');
+	specifyDialogBox.units = specifyDialogBox.add('checkbox', [140,54,300,90], 'Include units label');
+	specifyDialogBox.units.value = true;
+
+	specifyDialogBox.btn = specifyDialogBox.add('button', [140,100,280,140], 'Specify Object(s) ▸', 'spec');
 
 	// document
 	var doc = activeDocument;
@@ -66,14 +69,14 @@ if (app.documents.length > 0) {
 	function startSpec() {
 
 		if (selectedItems == 1) {
-			specSingle( doc.selection[0].geometricBounds, dialogBox.where.selection.text );
+			specSingle( doc.selection[0].geometricBounds, specifyDialogBox.where.selection.text );
 		} else if (selectedItems == 2) {
-			specDouble( doc.selection[0], doc.selection[1], dialogBox.where.selection.text );
+			specDouble( doc.selection[0], doc.selection[1], specifyDialogBox.where.selection.text );
 		} else {
 			alert('Please select at least 1 or 2 items.');
 		}
 
-		dialogBox.close();
+		specifyDialogBox.close();
 	}
 
 
@@ -285,7 +288,10 @@ if (app.documents.length > 0) {
 			// Conversions : http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/illustrator/sdk/CC2014/Illustrator%20Scripting%20Guide.pdf
 			// UnitValue object (page 230): http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/scripting/pdfs/javascript_tools_guide.pdf
 
+			var displayUnitsLabel = specifyDialogBox.units.value;
 			var v = val;
+			var unitsLabel = '';
+
 			switch (doc.rulerUnits) {
 				
 				case RulerUnits.Picas:
@@ -298,34 +304,38 @@ if (app.documents.length > 0) {
 				case RulerUnits.Inches:
 					v = new UnitValue(v, "pt").as("in");
 					v = v.toFixed (decimals);
-					v = v + " in"; // add abbreviation
+					unitsLabel = " in"; // add abbreviation
 					break;
 
 				case RulerUnits.Millimeters:
 					v = new UnitValue(v, "pt").as("mm");
 					v = v.toFixed (decimals);
-					v = v + " mm"; // add abbreviation
+					unitsLabel = " mm"; // add abbreviation
 					break;
 
 				case RulerUnits.Centimeters:
 					v = new UnitValue(v, "pt").as("cm");
 					v = v.toFixed (decimals);
-					v = v + " cm"; // add abbreviation
+					unitsLabel = " cm"; // add abbreviation
 					break;
 
 				case RulerUnits.Pixels:
 					v = new UnitValue(v, "pt").as("px");
 					v = v.toFixed (decimals);
-					v = v + " px"; // add abbreviation
+					unitsLabel = " px"; // add abbreviation
 					break;
 
 				default:
 					v = new UnitValue(v, "pt").as("pt");
 					v = v.toFixed (decimals);
-					v = v + " pt"; // add abbreviation
+					unitsLabel = " pt"; // add abbreviation
 			}
 
-			t.contents = v;
+			if(displayUnitsLabel) {
+				t.contents = v + unitsLabel;
+			} else {
+				t.contents = v;
+			}
 			t.top = y;
 			t.left = x;
 
@@ -379,8 +389,8 @@ if (app.documents.length > 0) {
 			break;
 		case 1:
 		case 2:
-			dialogBox.btn.addEventListener ('click', startSpec );
-			dialogBox.show();
+			specifyDialogBox.btn.addEventListener ('click', startSpec );
+			specifyDialogBox.show();
 			break;
 		default:
 			beep();
