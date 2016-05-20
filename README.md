@@ -1,6 +1,12 @@
 # SPECIFY
 Illustrator script to specify dimensions of an object, or to specify the dimensions between two objects
 
+
+[![GitHub release](https://img.shields.io/github/release/adamdehaven/Specify.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/archive/master.zip) 
+[![GitHub commits](https://img.shields.io/github/commits-since/adamdehaven/Specify/v1.0.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/commits/master) 
+[![GitHub issues](https://img.shields.io/github/issues/adamdehaven/Specify.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/issues) 
+[![license](https://img.shields.io/github/license/adamdehaven/Specify.svg?maxAge=3600)](https://raw.githubusercontent.com/adamdehaven/Specify/master/LICENSE)
+
 ##### Save to Default Scripts
 > To allow the script to show as an option within the default `Scripts` menu, save the script in the following location _(path shown is for Mac. Your actual path may vary)_
 > ```
