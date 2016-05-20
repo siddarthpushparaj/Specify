@@ -3,7 +3,7 @@ Illustrator script to specify dimensions of an object, or to specify the dimensi
 
 
 [![GitHub release](https://img.shields.io/github/release/adamdehaven/Specify.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/archive/master.zip) 
-[![GitHub commits](https://img.shields.io/github/commits-since/adamdehaven/Specify/v1.0.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/commits/master) 
+[![GitHub commits](https://img.shields.io/github/commits-since/adamdehaven/Specify/v1.0.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/compare/v1.0...master) 
 [![GitHub issues](https://img.shields.io/github/issues/adamdehaven/Specify.svg?maxAge=3600)](https://github.com/adamdehaven/Specify/issues) 
 [![license](https://img.shields.io/github/license/adamdehaven/Specify.svg?maxAge=3600)](https://raw.githubusercontent.com/adamdehaven/Specify/master/LICENSE)
 
