@@ -293,7 +293,7 @@ if (app.documents.length > 0) {
 			var unitsLabel = '';
 
 			switch (doc.rulerUnits) {
-				
+
 				case RulerUnits.Picas:
 					v = new UnitValue(v, "pt").as("pc");
 					var vd = v - Math.floor (v);
